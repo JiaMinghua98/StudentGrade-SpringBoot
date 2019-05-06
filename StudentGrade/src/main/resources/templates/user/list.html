@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>BISTU学生信息系统</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}"></link>
+    <style>
+   .pagination {
+	display: inline-block;
+}
+
+.pagination a {
+	color: black;
+	float: left;
+	padding: 5px 5px;
+	text-decoration: none;
+}
+
+.pagination a.active {
+	background-color: gray;
+	color: white;
+	border-radius: 2px;
+}
+</style>
+</head>
+<body class="container" >
+<h2 align="center">BISTU学生信息系统</h2>
+<h5 align="center">软工1602 贾明华 2016010571</h5>
+<br/>
+<div class="form-group">
+<form class="form-inline" role="form">
+    <div class="nav nav-tabs">
+        <a href="/toAdd" th:href="@{/toAdd}" class="btn btn-info">添加学生</a> &nbsp; &nbsp;
+<!-- 	    <input type="text" class="form-control" name="name"  id="name" placeholder="按照学生姓名查询"/> -->
+<!-- 	    <input type="submit" value="查询" class="btn btn-info" /> -->
+<!-- 	    &nbsp; &nbsp; -->
+<!-- 	    <input type="submit" name="Button4" value=" 打 印 " id="Button4"  class="btn btn-info" onclick="window.print();" /> -->
+    </div>
+</form>
+</div>
+<br/>
+<div class="with:80%">
+    <table class="table table-striped table-bordered">
+        <thead>
+        <tr>
+            <th>编号</th>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>性别</th>
+            <th>创建时间</th>
+            <th>更新时间</th>
+            <th>修改</th>
+            <th>删除</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr  th:each="user : ${users}">
+            <th scope="row" th:text="${user.id}">1</th>
+            <td th:text="${user.userName}">neo</td>
+            <td th:text="${user.age}">Otto</td>
+            <td th:text="${user.sex}">6</td>
+            <td th:text="${user.createTime}">neo</td>
+            <td th:text="${user.updateTime}">neo</td>
+            <td><a th:href="@{/toEdit(id=${user.id})}" class="btn btn-warning btn-xs">修改</a></td>
+            <td><a th:href="@{/delete(id=${user.id})}" class="btn btn-danger btn-xs">删除</a></td>
+        </tr>
+        </tbody>
+    </table>
+    <hr>
+    <div class="container" style="text-align:center">
+	    <div th:if="${users.totalPages > 0}" class="pagination"  th:each="pageNumber : ${pageNumbers}" >
+			<li  class="pager"><a th:href="@{/list(size=${users.size}, page=${pageNumber})}" th:text=${pageNumber} th:class="${pageNumber==users.number + 1} ? active"></a></li>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

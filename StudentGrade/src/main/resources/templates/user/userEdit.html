@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>BISTU学生信息系统</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}"></link>
+</head>
+<body class="container">
+<br/>
+<h2 align="center">BISTU学生信息系统</h2>
+<h5 align="center">软工1602 贾明华 2016010571</h5>
+<h3>修改学生信息</h3>
+<br/><br/>
+<div class="with:80%">
+    <form class="form-horizontal"   th:action="@{/edit}" th:object="${user}"  method="post">
+        <div class="form-group">
+            <label for="id" class="col-sm-2 control-label" >学号</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="id" id="id" th:value="*{id}" placeholder="学号"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="userName" class="col-sm-2 control-label">姓名</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="userName"  id="userName" th:value="*{userName}" placeholder="姓名"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="age" class="col-sm-2 control-label">年龄</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="age"  id="age" th:value="*{age}" placeholder="年龄"/>
+            </div>
+        </div>
+         <div class="form-group">
+            <label for="sex" class="col-sm-2 control-label" >性别</label>
+            <div class="col-sm-10">
+                <select class="form-control"name="sex" id="sex" th:value="*{sex}"  placeholder="性别">
+					<option>男</option>
+					<option>女</option>
+				</select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="submit" value="提交" class="btn btn-info" />
+                &nbsp; &nbsp; &nbsp;
+                <a href="/toAdd" th:href="@{/list}" class="btn btn-info">返回</a>
+            </div>
+
+        </div>
+    </form>
+</div>
+</body>
+</html>

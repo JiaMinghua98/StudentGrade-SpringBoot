@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>BISTU成绩管理管理系统</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}"></link>
+</head>
+<body class="container">
+<br/>
+<h2 align="center">BISTU成绩管理系统</h2>
+<h5 align="center">软工1602 贾明华 2016010571</h5>
+<h3>修改成绩</h3>
+<br/><br/>
+<div class="with:80%">
+    <form class="form-horizontal"   th:action="@{/editGrade}" th:object="${grade}"  method="post">
+        <input type="hidden" name="id" th:value="*{id}" />
+        <div class="form-group">
+            <label for="studentID" class="col-sm-2 control-label">学号</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="studentID"  id="studentID" th:value="*{studentID}" placeholder="学号"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="courseName" class="col-sm-2 control-label" >课程名称</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="courseName" id="courseName"  th:value="*{courseName}" placeholder="课程名称"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="grade" class="col-sm-2 control-label">成绩</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="grade"  id="age" th:value="*{grade}" placeholder="成绩"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="submit" value="提交" class="btn btn-info" />
+                &nbsp; &nbsp; &nbsp;
+                <a href="/toAddGrade" th:href="@{/index}" class="btn btn-info">返回</a>
+            </div>
+
+        </div>
+    </form>
+</div>
+</body>
+</html>
